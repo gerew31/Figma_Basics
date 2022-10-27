@@ -16,7 +16,7 @@ class LoggedOut extends StatelessWidget {
       top: false,
       child: Scaffold(
         //adding bottom bar for buttons
-          bottomNavigationBar: Container(
+          bottomNavigationBar: SizedBox(
             height: 105,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -74,9 +74,8 @@ class LoggedOut extends StatelessWidget {
               SvgPicture.asset(
                 assetName,
                 alignment: Alignment.center,
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.height,
-                fit: BoxFit.cover,
+                width: double.infinity,
+                fit: BoxFit.fill,
               ),
               Center(
                 child: Image.asset('assets/LOGO.png'),

@@ -1,36 +1,57 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:figma_app/controllers/email_field_validation.dart';
+import 'package:get/get.dart';
 
-class EmailFieldWidget extends StatefulWidget {
-  final TextEditingController controller;
-  const EmailFieldWidget({
-    required this.controller,
+class EmailValidField extends StatelessWidget {
+  const EmailValidField({
     Key? key,
+    required this.controller,
   }) : super(key: key);
 
-  @override
-  State<EmailFieldWidget> createState() => _EmailFieldWidgetState();
-}
+  final EmailValidationController controller;
 
-class _EmailFieldWidgetState extends State<EmailFieldWidget> {
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: (email){
-        return email != null && !EmailValidator.validate(email) ? 'Enter a valid email' : null;
-      },
-      controller: widget.controller,
-      keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-          hintText: 'Email address',
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 3, color: Colors.black),
-            borderRadius: BorderRadius.all(Radius.circular(0)),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 3, color: Colors.black),
-            borderRadius: BorderRadius.all(Radius.circular(0)),
-          )),
+    return GetBuilder(
+        init: EmailValidationController(),
+        builder: (_){
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              TextFormField(
+                onChanged: (value) {
+                  controller.email = value;
+                },
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  hintText: 'Email address',
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 3,
+                        color: controller.email != 0 && !controller.isValid ? Colors.red : Colors.black),
+                    borderRadius: const BorderRadius.all(Radius.circular(0)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 3,
+                        color: controller.email != 0 && !controller.isValid ? Colors.red : Colors.black),
+                    borderRadius: const BorderRadius.all(Radius.circular(0)),
+                  ),
+                ),
+              ),
+             const SizedBox(
+                height: 3,
+              ),
+              Text(!controller.isValid ? 'Enter a valid email' : '',
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'Comfortaa',
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+          );
+        }
     );
   }
 }
