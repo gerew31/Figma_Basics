@@ -1,9 +1,7 @@
-
 import 'package:figma_app/components/email_field_widget.dart';
 import 'package:figma_app/controllers/email_field_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 
 class LoginScreen extends StatelessWidget {
   final controller = Get.put(EmailValidationController());
