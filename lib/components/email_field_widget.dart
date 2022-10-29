@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:figma_app/controllers/email_field_validation.dart';
+import 'package:figma_app/controllers/validation_logic.dart';
 import 'package:get/get.dart';
 
 class EmailValidField extends StatelessWidget {
@@ -8,13 +8,13 @@ class EmailValidField extends StatelessWidget {
     required this.controller,
   }) : super(key: key);
 
-  final EmailValidationController controller;
+  final ValidationController controller;
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-        init: EmailValidationController(),
-        builder: (_){
+        init: ValidationController(),
+        builder: (_) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -28,21 +28,26 @@ class EmailValidField extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                         width: 3,
-                        color: controller.email != 0 && !controller.isValid ? Colors.red : Colors.black),
+                        color: !controller.isValid
+                            ? Colors.red
+                            : Colors.black),
                     borderRadius: const BorderRadius.all(Radius.circular(0)),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                         width: 3,
-                        color: controller.email != 0 && !controller.isValid ? Colors.red : Colors.black),
+                        color: !controller.isValid
+                            ? Colors.red
+                            : Colors.black),
                     borderRadius: const BorderRadius.all(Radius.circular(0)),
                   ),
                 ),
               ),
-             const SizedBox(
+              const SizedBox(
                 height: 3,
               ),
-              Text(!controller.isValid ? 'Enter a valid email' : '',
+              Text(
+                !controller.isValid ? 'Enter a valid email' : '',
                 style: const TextStyle(
                   fontSize: 12,
                   fontFamily: 'Comfortaa',
@@ -51,7 +56,6 @@ class EmailValidField extends StatelessWidget {
               ),
             ],
           );
-        }
-    );
+        });
   }
 }

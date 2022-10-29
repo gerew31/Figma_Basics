@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:figma_app/components/email_field_widget.dart';
-import 'package:figma_app/controllers/email_field_validation.dart';
+import 'package:figma_app/controllers/validation_logic.dart';
 import 'package:get/get.dart';
+import 'package:figma_app/components/password_field_widget.dart';
+import 'package:figma_app/controllers/database.dart';
 
 
 class RegisterScreen extends StatelessWidget {
-  final controller = Get.put(EmailValidationController());
+  final controller = Get.put(ValidationController());
+  DataBase data = DataBase();
 
   RegisterScreen({super.key});
 
@@ -52,26 +55,18 @@ class RegisterScreen extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const  InputDecoration(
-                      hintText: 'Create Password',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 3, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 3, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
-                      ),
-                    ),
-                  ),
+                  PasswordField(inFieldText: 'Create a password',),
                   const SizedBox(
                     height: 16,
                   ),
               TextButton(
-              onPressed: () {
-                controller.updateEmailState();
+              onPressed: () { // did not finish
+                controller.accountCreating();
+                print('${controller.isPasswordValid}');
+                print('${controller.createdPassword}');
+                print('${controller.password}');
+
+
               },
               child:Container(
                       alignment: Alignment.center,

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/services.dart';
 import 'package:figma_app/screens/pre_register_screens/login_screen.dart';
 import 'register_screen.dart';
+import 'package:get/get.dart';
 
 class LoggedOut extends StatelessWidget {
   static const assetName = 'assets/Rectangle.svg';
@@ -23,7 +24,7 @@ class LoggedOut extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                    Get.to(LoginScreen());
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -45,7 +46,7 @@ class LoggedOut extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterScreen()));
+                    Get.to(RegisterScreen()); 
                   },
                   child: Container(
                     alignment: Alignment.center,

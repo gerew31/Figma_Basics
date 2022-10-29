@@ -1,12 +1,18 @@
 import 'package:figma_app/components/email_field_widget.dart';
-import 'package:figma_app/controllers/email_field_validation.dart';
+import 'package:figma_app/controllers/validation_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:figma_app/components/password_field_widget.dart';
+//import 'package:figma_app/after_register_screens/gallery_screen.dart';
+import 'package:figma_app/controllers/database.dart';
 
 class LoginScreen extends StatelessWidget {
-  final controller = Get.put(EmailValidationController());
+  final controller = Get.put(ValidationController());
 
-   LoginScreen({super.key});
+  DataBase data = DataBase();
+  LoginScreen({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -45,31 +51,19 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(
                     height: 32,
                   ),
-              EmailValidField(controller: controller),
+                  EmailValidField(controller: controller),
                   const SizedBox(
                     height: 16,
                   ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      hintText: 'Password',
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 3, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(width: 3, color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(0)),
-                      ),
-                    ),
-                  ),
+                  PasswordField(inFieldText: 'Password',),
                   const SizedBox(
                     height: 16,
                   ),
                   TextButton(
-                    
                     onPressed: () {
                       controller.updateEmailState();
+                      controller.loginScreenLogic();
+
                     },
                     child: Container(
                       alignment: Alignment.center,
