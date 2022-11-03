@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/services.dart';
 import 'package:figma_app/screens/pre_register_screens/login_screen.dart';
+import '../../controllers/validation_logic.dart';
 import 'register_screen.dart';
 import 'package:get/get.dart';
 
 class LoggedOut extends StatelessWidget {
   static const assetName = 'assets/Rectangle.svg';
+  final controller = Get.put(ValidationController());
+
+   LoggedOut({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {

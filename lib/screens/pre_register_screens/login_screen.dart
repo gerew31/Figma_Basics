@@ -3,13 +3,10 @@ import 'package:figma_app/controllers/validation_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:figma_app/components/password_field_widget.dart';
-//import 'package:figma_app/after_register_screens/gallery_screen.dart';
-import 'package:figma_app/controllers/database.dart';
+
 
 class LoginScreen extends StatelessWidget {
   final controller = Get.put(ValidationController());
-
-  DataBase data = DataBase();
   LoginScreen({super.key});
 
 
@@ -63,7 +60,6 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       controller.updateEmailState();
                       controller.loginScreenLogic();
-
                     },
                     child: Container(
                       alignment: Alignment.center,

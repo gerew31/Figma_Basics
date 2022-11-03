@@ -30,13 +30,13 @@ class PasswordField extends StatelessWidget {
                 borderSide: BorderSide(width: 3, color:  !controller.isPasswordValid
                     ? Colors.red
                     : Colors.black),
-                borderRadius: BorderRadius.all(Radius.circular(0)),
+                borderRadius: const BorderRadius.all(Radius.circular(0)),
               ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(width: 3, color:  !controller.isPasswordValid
                     ? Colors.red
                     : Colors.black),
-                borderRadius: BorderRadius.all(Radius.circular(0)),
+                borderRadius: const BorderRadius.all(Radius.circular(0)),
               ),
             ),
           ),

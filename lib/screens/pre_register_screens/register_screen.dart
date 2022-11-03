@@ -3,12 +3,11 @@ import 'package:figma_app/components/email_field_widget.dart';
 import 'package:figma_app/controllers/validation_logic.dart';
 import 'package:get/get.dart';
 import 'package:figma_app/components/password_field_widget.dart';
-import 'package:figma_app/controllers/database.dart';
 
 
 class RegisterScreen extends StatelessWidget {
   final controller = Get.put(ValidationController());
-  DataBase data = DataBase();
+
 
   RegisterScreen({super.key});
 
@@ -62,11 +61,6 @@ class RegisterScreen extends StatelessWidget {
               TextButton(
               onPressed: () { // did not finish
                 controller.accountCreating();
-                print('${controller.isPasswordValid}');
-                print('${controller.createdPassword}');
-                print('${controller.password}');
-
-
               },
               child:Container(
                       alignment: Alignment.center,

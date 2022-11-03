@@ -46,6 +46,8 @@ class EmailValidField extends StatelessWidget {
               const SizedBox(
                 height: 3,
               ),
+
+              !controller.existedEmail  ?
               Text(
                 !controller.isValid ? 'Enter a valid email' : '',
                 style: const TextStyle(
@@ -53,7 +55,13 @@ class EmailValidField extends StatelessWidget {
                   fontFamily: 'Comfortaa',
                   color: Colors.grey,
                 ),
-              ),
+              ) :  Text( controller.existedEmail ? 'Email\'s already exist' : '',
+                style:  const TextStyle(
+                  fontSize: 12,
+                  fontFamily: 'Comfortaa',
+                  color: Colors.grey,
+                ),
+              )
             ],
           );
         });

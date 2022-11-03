@@ -7,7 +7,6 @@ class Gallery extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
         body: Container(),
       ),
     );
